@@ -1,0 +1,10 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "ban-types": false,
+        "no-default-export": false,
+        "no-implicit-dependencies": false,
+        "no-unbound-method": false,
+        "typedef": false
+    }
+}
