@@ -35,9 +35,9 @@ export class TypeGuardGenerator {
         if (!identifier) {
             identifier = this.allocateTypeGuardIdenifier(type);
 
-            const functionDeclation = this.createTypeGuardFunction(type, identifier);
+            const functionDeclaration = this.createTypeGuardFunction(type, identifier);
 
-            this.generatedTypeGuards.set(type, { identifier, functionDeclation });
+            this.generatedTypeGuards.set(type, { identifier, functionDeclation: functionDeclaration });
         }
 
         return identifier;
