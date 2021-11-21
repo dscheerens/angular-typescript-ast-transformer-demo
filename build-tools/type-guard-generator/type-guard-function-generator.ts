@@ -44,7 +44,7 @@ export class TypeGuardGenerator {
     }
 
     private allocateTypeGuardIdenifier(type: Type): Identifier {
-        const typeGuardName = this.allocateUnqiueTypeGuardName(type);
+        const typeGuardName = this.allocateUniqueTypeGuardName(type);
 
         const typeGuardIdentifier = this.context.factory.createIdentifier(`__is${typeGuardName}__`);
 
@@ -53,7 +53,7 @@ export class TypeGuardGenerator {
         return typeGuardIdentifier;
     }
 
-    private allocateUnqiueTypeGuardName(type: Type): string {
+    private allocateUniqueTypeGuardName(type: Type): string {
         const desiredName = this.typeNameGenerator.getTypeName(type);
 
         if (!this.usedTypeGuardNames.has(desiredName)) {
