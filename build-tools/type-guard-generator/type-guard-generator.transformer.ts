@@ -35,11 +35,11 @@ function typeGuardGeneratorTransformer(
         function visit(node: Node): VisitResult<Node> {
             if (isTypeGuard(node)) {
                 const typeToCheck = typeChecker.getTypeFromTypeNode(node.typeArguments![0]!);
-                const typeGuardFunctionIndentifier = generator.getTypeGuardFor(typeToCheck);
+                const typeGuardFunctionIdentifier = generator.getTypeGuardFor(typeToCheck);
 
                 return node.arguments.length > 0
-                    ? factory.createCallExpression(typeGuardFunctionIndentifier, undefined, node.arguments)
-                    : typeGuardFunctionIndentifier;
+                    ? factory.createCallExpression(typeGuardFunctionIdentifier, undefined, node.arguments)
+                    : typeGuardFunctionIdentifier;
             }
 
             return visitEachChild(node, visit, context);
