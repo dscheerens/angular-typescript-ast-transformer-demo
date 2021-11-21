@@ -3,6 +3,7 @@ import { Configuration } from 'webpack';
 
 import { addTransformer } from './add-transformer';
 import { stringSubstitute } from './string-substitute.transformer';
+import { typeGuardGenerator } from './type-guard-generator';
 
 export default function(webpackConfig: Configuration): Configuration {
     addTransformer(webpackConfig, stringSubstitute({
@@ -11,6 +12,8 @@ export default function(webpackConfig: Configuration): Configuration {
             timestamp: new Date().toISOString(),
         },
     }));
+
+    addTransformer(webpackConfig, typeGuardGenerator());
 
     return webpackConfig;
 }

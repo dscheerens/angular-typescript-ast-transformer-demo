@@ -1,3 +1,33 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.importStringConfiguration.trailingComma": "multiLine",
+    "importSorter.sortConfiguration.removeUnusedImports": true,
+    "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 140,
+    "importSorter.sortConfiguration.importMembers.order": "lowercaseLast",
+    "importSorter.sortConfiguration.customOrderingRules.rules": [
+      {
+        "type": "importMember",
+        "regex": "^$",
+        "orderLevel": 5,
+        "disableSort": true
+      },
+      {
+        "regex": "^[^.#]",
+        "orderLevel": 10
+      },
+      {
+        "regex": "^#",
+        "orderLevel": 20
+      },
+      {
+        "regex": "^[.][.]",
+        "orderLevel": 30
+      },
+      {
+        "regex": "^[.][^.]",
+        "orderLevel": 40
+      }
+    ],
 }
