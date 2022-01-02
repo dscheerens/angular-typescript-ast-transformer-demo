@@ -6,7 +6,9 @@ export type CreateTransformers = (program: Program) => Exclude<CustomTransformer
 
 export function addTransformer(webpackConfig: Configuration, createTransformers: CreateTransformers): void {
     const plugins = (webpackConfig.plugins ?? []);
-    const angularWebpackPlugin = plugins.find(isInstanceOf(AngularWebpackPlugin)) as AngularWebpackPluginWithPrivateApi | undefined;
+    const angularWebpackPlugin = plugins.find(
+        (plugin): plugin is AngularWebpackPluginWithPrivateApi => plugin instanceof AngularWebpackPlugin,
+    );
 
     if (!angularWebpackPlugin) {
         return;
@@ -31,7 +33,3 @@ type AngularWebpackPluginWithPrivateApi = Omit<AngularWebpackPlugin, 'createFile
         onAfterEmit?: (sourceFile: SourceFile) => void,
     ): unknown;
 };
-
-function isInstanceOf<T>(type: Function & { prototype: T }): (value: unknown) => value is T {
-    return (value): value is T => value instanceof type;
-}
