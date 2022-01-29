@@ -1,20 +1,19 @@
+import { CreateTransformer } from 'ngx-ast-transform';
 import {
     CallExpression, Node, NodeFactory, Program, SourceFile, TransformationContext, Transformer, VisitResult, isCallExpression, isIdentifier,
     visitEachChild, visitNode,
 } from 'typescript';
 
-import { CreateTransformers } from '../add-transformer';
-
 import { TypeAnalyzer } from './type-analyzer';
 import { GeneratedTypeGuardEntry, TypeGuardGenerator } from './type-guard-function-generator';
 import { TypeNameGenerator } from './type-name-generator';
 
-export function typeGuardGenerator(): CreateTransformers {
-    return (program) => [(context) => typeGuardGeneratorTransformer(
+export function typeGuardGenerator(): CreateTransformer {
+    return (program) => (context) => typeGuardGeneratorTransformer(
         program,
         new TypeAnalyzer(program.getTypeChecker()),
         context,
-    )];
+    );
 }
 
 function typeGuardGeneratorTransformer(

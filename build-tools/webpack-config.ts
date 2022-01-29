@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
+import { addTransformer } from 'ngx-ast-transform';
 import { Configuration } from 'webpack';
 
-import { addTransformer } from './add-transformer';
 import { stringSubstitute } from './string-substitute.transformer';
 import { typeGuardGenerator } from './type-guard-generator';
 

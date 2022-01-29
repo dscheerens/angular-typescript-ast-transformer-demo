@@ -1,6 +1,5 @@
-import { Node, visitEachChild, visitNode, VisitResult, isStringLiteral } from 'typescript';
-
-import { CreateTransformers } from './add-transformer';
+import { CreateTransformer } from 'ngx-ast-transform';
+import { Node, VisitResult, isStringLiteral, visitEachChild, visitNode } from 'typescript';
 
 export interface StringSubstituteDelimiters {
     start: string;
@@ -10,7 +9,7 @@ export interface StringSubstituteDelimiters {
 export function stringSubstitute(
     substituteValues: unknown,
     delimiters: StringSubstituteDelimiters = { start: '<<<', end: '>>>' },
-): CreateTransformers {
+): CreateTransformer {
     const stringSubstituter = new StringSubstituter(substituteValues, delimiters);
 
     return () => [(context) => (sourceFile) => {
