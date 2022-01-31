@@ -12,13 +12,13 @@ export function stringSubstitute(
 ): CreateTransformer {
     const stringSubstituter = new StringSubstituter(substituteValues, delimiters);
 
-    return () => [(context) => (sourceFile) => {
+    return () => (context) => (sourceFile) => {
         function visit(node: Node): VisitResult<Node> {
             if (isStringLiteral(node)) {
                 const subtitionValue = stringSubstituter.getSubstitutionFor(node.text);
 
                 if (subtitionValue !== undefined) {
-                return context.factory.createStringLiteral(subtitionValue);
+                    return context.factory.createStringLiteral(subtitionValue);
                 }
             }
 
@@ -26,7 +26,7 @@ export function stringSubstitute(
         }
 
         return visitNode(sourceFile, visit);
-    }];
+    };
 }
 
 class StringSubstituter {
