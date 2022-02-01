@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -6,10 +6,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     public readonly title = '<<<package.name>>>';
     public readonly version = '<<<package.version>>>';
     public readonly buildDate = '<<<build.timestamp>>>';
+
+    public ngOnInit(): void {
+        console.log('5 + 3 =', 5 + 3);
+    }
 
     public testTypeGuards(): void {
         const value = Math.random() < 0.5 ? Math.PI : ['p', 'i'].join('');
