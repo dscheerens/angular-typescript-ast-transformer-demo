@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
     public readonly buildDate = '<<<build.timestamp>>>';
 
     public ngOnInit(): void {
-        console.log('5 + 3 =', 5 + 3);
+        console.log('5 + 3 =', 5 + 3 - 1);
     }
 
     public testTypeGuards(): void {
